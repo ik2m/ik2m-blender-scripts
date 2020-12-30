@@ -31,14 +31,14 @@ class QuickExport(bpy.types.Operator):
         p = props.option_path or self.default_path
         n = props.option_name or self.default_name
 
-        composed_path = p+n+self.extension
+        filepath = p+n+self.extension
 
         setting_path = bpy.context.blend_data.filepath.rstrip(
         bpy.path.basename(bpy.context.blend_data.filepath))+'my_export_setting.json'
         setting_open = open(setting_path,'r')
         setting = json.load(setting_open)
 
-        setting['filepath']=composed_path
+        setting['filepath']=filepath
         setting['object_types']=set(setting['object_types'])#jsonでは配列になってしまうのでset化
 
         bpy.ops.export_scene.fbx(
