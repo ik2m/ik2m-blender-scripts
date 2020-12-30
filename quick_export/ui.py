@@ -1,6 +1,6 @@
 import bpy
 import os
-
+import json
 
 class MyPropGrp(bpy.types.PropertyGroup):
     option_path: bpy.props.StringProperty(
@@ -33,42 +33,16 @@ class QuickExport(bpy.types.Operator):
 
         composed_path = p+n+self.extension
 
+        setting_path = bpy.context.blend_data.filepath.rstrip(
+        bpy.path.basename(bpy.context.blend_data.filepath))+'my_export_setting.json'
+        setting_open = open(setting_path,'r')
+        setting = json.load(setting_open)
+
+        setting['filepath']=composed_path
+        setting['object_types']=set(setting['object_types'])#jsonでは配列になってしまうのでset化
+
         bpy.ops.export_scene.fbx(
-            filepath=composed_path,
-            check_existing=True,
-            filter_glob="*.fbx",
-            use_selection=False,
-            use_active_collection=False,
-            global_scale=1.0,
-            apply_unit_scale=True,  # 単位を適用
-            apply_scale_options='FBX_SCALE_ALL',
-            bake_space_transform=False,
-            object_types={'EMPTY', 'MESH', 'ARMATURE'},
-            use_mesh_modifiers=True,
-            mesh_smooth_type='OFF',
-            use_subsurf=False,
-            use_mesh_edges=False,
-            use_tspace=False,
-            use_custom_props=False,
-            add_leaf_bones=False,
-            primary_bone_axis='Y',
-            secondary_bone_axis='X',
-            use_armature_deform_only=True,
-            armature_nodetype='NULL',
-            bake_anim=False,
-            bake_anim_use_all_bones=True,
-            bake_anim_use_nla_strips=True,
-            bake_anim_use_all_actions=True,
-            bake_anim_force_startend_keying=True,
-            bake_anim_step=1.0,
-            bake_anim_simplify_factor=1.0,
-            path_mode='RELATIVE',
-            embed_textures=False,
-            batch_mode='OFF',
-            use_batch_own_dir=True,
-            use_metadata=True,
-            axis_forward='-Z',
-            axis_up='Y'
+            **(setting)
         )
         return{'FINISHED'}
 

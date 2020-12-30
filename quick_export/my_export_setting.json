@@ -1,4 +1,5 @@
 {
+    "filepath":null,
     "check_existing":true,
     "filter_glob":"*.fbx",
     "use_selection":false,
