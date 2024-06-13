@@ -8,7 +8,9 @@ class ApplyPose(bpy.types.Operator):
 
     @classmethod
     def poll(cls, context):
-        return context.active_object.type == 'ARMATURE'  # and context.mode == 'ARMATURE'
+        return (
+            context.active_object.type == "ARMATURE"
+        )  # and context.mode == 'ARMATURE'
 
     def execute(self, context):
         armature = context.active_object
@@ -16,29 +18,28 @@ class ApplyPose(bpy.types.Operator):
             if mesh.active_shape_key is not None:
                 continue  # シェイプキーがあると現状無視される
             for mod in mesh.modifiers:
-                if mod.type == 'ARMATURE':
+                if mod.type == "ARMATURE":
                     armature_mod = mod
             override = context.copy()
-            override['object'] = mesh
+            override["object"] = mesh
             bpy.ops.object.modifier_copy(override, modifier=armature_mod.name)
             for mod in mesh.modifiers:
-                if mod.type == 'ARMATURE':
+                if mod.type == "ARMATURE":
                     armature_mod_copy = mod
-            bpy.ops.object.modifier_apply(
-                override, modifier=armature_mod_copy.name)
+            bpy.ops.object.modifier_apply(override, modifier=armature_mod_copy.name)
 
         override = context.copy()
-        bpy.ops.object.mode_set(mode='POSE')
+        bpy.ops.object.mode_set(mode="POSE")
         bpy.ops.pose.armature_apply(override)  # ここもcontext overrideしたい
-        bpy.ops.object.mode_set(mode='OBJECT')
-        return{'FINISHED'}
+        bpy.ops.object.mode_set(mode="OBJECT")
+        return {"FINISHED"}
 
 
 class ApplyPoseLayoutPanel(bpy.types.Panel):
     bl_category = "Ikezaki"
     bl_label = "apply pose"
-    bl_space_type = 'VIEW_3D'
-    bl_region_type = 'UI'
+    bl_space_type = "VIEW_3D"
+    bl_region_type = "UI"
     # bl_context = ""
 
     def draw(self, context):
