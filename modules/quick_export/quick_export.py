@@ -16,7 +16,7 @@ class MyPropGrp(bpy.types.PropertyGroup):
 
 
 class QuickExport(bpy.types.Operator):
-    bl_idname = "ikezaki.quick_export"
+    bl_idname = "ikz.quick_export"
     bl_label = "quick export"
     bl_description = "指定の場所に自分用の設定でエクスポートするやつ"
 
@@ -27,7 +27,7 @@ class QuickExport(bpy.types.Operator):
     extension = ".fbx"
 
     def execute(self, context):
-        props = context.scene.ikezaki_qe_props
+        props = context.scene.ikz_qe_props
         p = props.option_path or self.default_path
         n = props.option_name or self.default_name
 
@@ -49,16 +49,21 @@ class QuickExport(bpy.types.Operator):
 
 
 class QuickExportLayoutPanel(bpy.types.Panel):
-    bl_category = "Ikezaki"
+    bl_category = "ikz"
     bl_label = "quick export"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
     # bl_context = ""
 
+
     def draw(self, context):
+        """
+        :param context:
+        :return:
+        """
         layout = self.layout
 
-        props = context.scene.ikezaki_qe_props
+        props = context.scene.ikz_qe_props
         row = layout.row()
         row.prop(props, "option_path")
         row = layout.row()
@@ -69,7 +74,7 @@ class QuickExportLayoutPanel(bpy.types.Panel):
         row.operator(QuickExport.bl_idname)
 
 
-regist_classes = (
+register_classes = (
     QuickExportLayoutPanel,
     QuickExport,
     MyPropGrp
@@ -77,18 +82,18 @@ regist_classes = (
 
 
 def register():
-    for c in regist_classes:
+    for c in register_classes:
         bpy.utils.register_class(c)
 
-    bpy.types.Scene.ikezaki_qe_props = bpy.props.PointerProperty(
+    bpy.types.Scene.ikz_qe_props = bpy.props.PointerProperty(
         type=MyPropGrp)
 
 
 def unregister():
-    for c in regist_classes:
+    for c in register_classes:
         bpy.utils.unregister_class(c)
 
-    del bpy.types.Scene.ikezaki_qe_props
+    del bpy.types.Scene.ikz_qe_props
 
 
 if __name__ == "__main__":
