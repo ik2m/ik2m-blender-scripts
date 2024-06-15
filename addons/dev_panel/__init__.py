@@ -35,7 +35,7 @@ class DevPanel(bpy.types.Panel):
         # row.prop(obj, "name")
 
         row = layout.row()
-        row.operator("script.reload")
+        row.operator("script.reload", icon="FILE_REFRESH")
 
 
 def register():
