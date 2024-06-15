@@ -67,6 +67,52 @@ class QuickExportOperator(bpy.types.Operator):
         return {"FINISHED"}
 
 
+class ExportBetterFbxOperator(bpy.types.Operator):
+    bl_idname = "ikz.export_better_fbx"
+    bl_label = "export_better_fbx"
+    bl_description = "エクスポート"
+
+    @classmethod
+    def poll(cls, context):
+        return True
+
+    def invoke(self, context, event):
+        better_export = getattr(bpy.ops, "better_export", None)
+        if hasattr(better_export, "fbx") and better_export.fbx.poll():
+            return self.execute(context)
+
+        self.report({"ERROR"}, "better_exportがないと動かないよ")
+        return {"CANCELLED"}
+
+    def execute(self, context):
+        better_export = getattr(bpy.ops, "better_export", None)
+        better_export.fbx("INVOKE_DEFAULT")
+        return {"FINISHED"}
+
+
+class ExportAutoRigProFbxOperator(bpy.types.Operator):
+    bl_idname = "ikz.export_auto_rig_pro_fbx"
+    bl_label = "export_auto_rig_pro_fbx"
+    bl_description = "エクスポート"
+
+    @classmethod
+    def poll(cls, context):
+        return any(obj for obj in context.selected_objects if obj.type == "ARMATURE")
+
+    def invoke(self, context, event):
+        arp_export_scene = getattr(bpy.ops, "arp_export_scene", None)
+        if hasattr(arp_export_scene, "fbx") and arp_export_scene.fbx.poll():
+            return self.execute(context)
+
+        self.report({"ERROR"}, "auto_rig_proがないと動かないよ")
+        return {"CANCELLED"}
+
+    def execute(self, context):
+        arp_export_scene = getattr(bpy.ops, "arp_export_scene", None)
+        arp_export_scene.fbx("INVOKE_DEFAULT")
+        return {"FINISHED"}
+
+
 class Panel(bpy.types.Panel):
     bl_category = "ikz"
     bl_idname = "IKZ_PT_QuickExport"
@@ -84,17 +130,31 @@ class Panel(bpy.types.Panel):
         layout = self.layout
 
         setting = getattr(context.scene, "ikz_qe_props", None)
-        row = layout.row()
-        row.prop(setting, "option_path")
-        row = layout.row()
-        row.prop(setting, "option_name")
+        # row = layout.row()
+        # row.prop(setting, "option_path")
+        # row = layout.row()
+        # row.prop(setting, "option_name")
 
         row = layout.row()
         row.scale_y = 2.0
         row.operator(QuickExportOperator.bl_idname)
 
+        row = layout.row()
+        row.scale_y = 2.0
+        row.operator(ExportBetterFbxOperator.bl_idname)
 
-register_classes = (Panel, QuickExportOperator, MyPropGrp)
+        row = layout.row()
+        row.scale_y = 2.0
+        row.operator(ExportAutoRigProFbxOperator.bl_idname)
+
+
+register_classes = (
+    Panel,
+    QuickExportOperator,
+    ExportBetterFbxOperator,
+    ExportAutoRigProFbxOperator,
+    MyPropGrp,
+)
 
 
 def register():
