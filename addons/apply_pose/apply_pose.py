@@ -2,7 +2,7 @@ import bpy
 
 
 class ApplyPose(bpy.types.Operator):
-    bl_idname = "ikezaki.apply_pose"
+    bl_idname = "ikz.apply_pose"
     bl_label = "apply pose"
     bl_description = "現状のポーズをレフトポーズにする"
 
@@ -36,7 +36,7 @@ class ApplyPose(bpy.types.Operator):
 
 
 class ApplyPoseLayoutPanel(bpy.types.Panel):
-    bl_category = "Ikezaki"
+    bl_category = "ikz"
     bl_label = "apply pose"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
@@ -50,19 +50,19 @@ class ApplyPoseLayoutPanel(bpy.types.Panel):
         row.operator(ApplyPose.bl_idname)
 
 
-regist_classes = (
+register_classes = (
     ApplyPoseLayoutPanel,
     ApplyPose,
 )
 
 
 def register():
-    for c in regist_classes:
+    for c in register_classes:
         bpy.utils.register_class(c)
 
 
 def unregister():
-    for c in regist_classes:
+    for c in register_classes:
         bpy.utils.unregister_class(c)
 
 
