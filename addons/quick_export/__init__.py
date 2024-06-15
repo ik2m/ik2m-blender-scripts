@@ -30,7 +30,7 @@ class MyPropGrp(bpy.types.PropertyGroup):
     )
 
 
-class IKZ_OT_QuickExport(bpy.types.Operator):
+class QuickExportOperator(bpy.types.Operator):
     bl_idname = "ikz.quick_export"
     bl_label = "quick export"
     bl_description = "指定の場所に自分用の設定でエクスポートするやつ"
@@ -67,9 +67,9 @@ class IKZ_OT_QuickExport(bpy.types.Operator):
         return {"FINISHED"}
 
 
-class IKZ_PT_QuickExport(bpy.types.Panel):
+class Panel(bpy.types.Panel):
     bl_category = "ikz"
-    bl_idname = __name__
+    bl_idname = "IKZ_PT_QuickExport"
     bl_label = "quick export"
     bl_description = "エクスポートする"
     bl_space_type = "VIEW_3D"
@@ -91,10 +91,10 @@ class IKZ_PT_QuickExport(bpy.types.Panel):
 
         row = layout.row()
         row.scale_y = 2.0
-        row.operator(IKZ_OT_QuickExport.bl_idname)
+        row.operator(QuickExportOperator.bl_idname)
 
 
-register_classes = (IKZ_PT_QuickExport, IKZ_OT_QuickExport, MyPropGrp)
+register_classes = (Panel, QuickExportOperator, MyPropGrp)
 
 
 def register():

@@ -16,7 +16,7 @@ bl_info = {
 }
 
 
-class IKZ_OT_ApplyPose(bpy.types.Operator):
+class ApplyPoseOperator(bpy.types.Operator):
     bl_idname = "ikz.apply_pose"
     bl_label = "apply pose"
     bl_description = "現状のポーズをレフトポーズにする"
@@ -50,9 +50,9 @@ class IKZ_OT_ApplyPose(bpy.types.Operator):
         return {"FINISHED"}
 
 
-class IKZ_PT_apply_pose(bpy.types.Panel):
+class ApplyPosePanel(bpy.types.Panel):
     bl_category = "ikz"
-    bl_idname = __name__
+    bl_idname = "IKZ_PT_ApplyPose"
     bl_label = "apply pose"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
@@ -64,12 +64,12 @@ class IKZ_PT_apply_pose(bpy.types.Panel):
 
         row = layout.row()
         row.scale_y = 2.0
-        row.operator(IKZ_OT_ApplyPose.bl_idname)
+        row.operator(ApplyPoseOperator.bl_idname)
 
 
 register_classes = (
-    IKZ_PT_apply_pose,
-    IKZ_OT_ApplyPose,
+    ApplyPosePanel,
+    ApplyPoseOperator,
 )
 
 

@@ -15,9 +15,9 @@ bl_info = {
 }
 
 
-class IKZ_PT_DevPanel(bpy.types.Panel):
+class DevPanel(bpy.types.Panel):
     bl_category = "ikz"
-    bl_idname = __name__
+    bl_idname = "IKZ_PT_DevPanel"
     bl_label = "for dev"
     bl_description = "開発に使うやつ"
     bl_space_type = "VIEW_3D"
@@ -39,11 +39,11 @@ class IKZ_PT_DevPanel(bpy.types.Panel):
 
 
 def register():
-    bpy.utils.register_class(IKZ_PT_DevPanel)
+    bpy.utils.register_class(DevPanel)
 
 
 def unregister():
-    bpy.utils.unregister_class(IKZ_PT_DevPanel)
+    bpy.utils.unregister_class(DevPanel)
 
 
 if __name__ == "__main__":

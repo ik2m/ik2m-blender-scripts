@@ -16,7 +16,7 @@ bl_info = {
 }
 
 
-class CreateLibraryOverride(bpy.types.Operator):
+class CreateLibraryOverrideOperator(bpy.types.Operator):
     bl_idname = "object.create_library_override"
     bl_label = "Create Library Override"
 
@@ -31,17 +31,17 @@ def draw_menu(self, context):
     # アウトライナの右クリックで表示する
     layout = self.layout
     layout.separator()
-    layout.operator(CreateLibraryOverride.bl_idname)
+    layout.operator(CreateLibraryOverrideOperator.bl_idname)
 
 
 def register():
-    bpy.utils.register_class(CreateLibraryOverride)
+    bpy.utils.register_class(CreateLibraryOverrideOperator)
     bpy.types.OUTLINER_MT_object.append(draw_menu)
 
 
 def unregister():
     bpy.types.OUTLINER_MT_object.remove(draw_menu)
-    bpy.utils.unregister_class(CreateLibraryOverride)
+    bpy.utils.unregister_class(CreateLibraryOverrideOperator)
 
 
 if __name__ == "__main__":
