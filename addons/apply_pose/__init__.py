@@ -1,3 +1,5 @@
+from bpy import utils, ops
+from bpy.ops import object, pose
 import bpy
 
 
@@ -40,6 +42,7 @@ class ApplyPoseLayoutPanel(bpy.types.Panel):
     bl_label = "apply pose"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
+
     # bl_context = ""
 
     def draw(self, context):

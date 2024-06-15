@@ -1,5 +1,7 @@
 import bpy
 import json
+from bpy import props, path, utils
+from bpy.ops import export_scene
 
 
 class MyPropGrp(bpy.types.PropertyGroup):
@@ -27,9 +29,10 @@ class QuickExport(bpy.types.Operator):
     extension = ".fbx"
 
     def execute(self, context):
-        props = context.scene.ikz_qe_props
-        p = props.option_path or self.default_path
-        n = props.option_name or self.default_name
+
+        setting = getattr(context.scene, "ikz_qe_props", None)
+        p = setting.option_path or self.default_path
+        n = setting.option_name or self.default_name
 
         filepath = p + n + self.extension
 
@@ -65,11 +68,11 @@ class QuickExportLayoutPanel(bpy.types.Panel):
         """
         layout = self.layout
 
-        props = context.scene.ikz_qe_props
+        setting = getattr(context.scene, "ikz_qe_props", None)
         row = layout.row()
-        row.prop(props, "option_path")
+        row.prop(setting, "option_path")
         row = layout.row()
-        row.prop(props, "option_name")
+        row.prop(setting, "option_name")
 
         row = layout.row()
         row.scale_y = 2.0
@@ -83,14 +86,14 @@ def register():
     for c in register_classes:
         bpy.utils.register_class(c)
 
-    bpy.types.Scene.ikz_qe_props = bpy.props.PointerProperty(type=MyPropGrp)
+    setattr(bpy.types.Scene, "ikz_qe_props", props.PointerProperty(type=MyPropGrp))
 
 
 def unregister():
     for c in register_classes:
         bpy.utils.unregister_class(c)
 
-    del bpy.types.Scene.ikz_qe_props
+    delattr(bpy.types.Scene, "ikz_qe_props")
 
 
 if __name__ == "__main__":
