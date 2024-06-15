@@ -3,6 +3,19 @@ import json
 from bpy import props, path, utils
 from bpy.ops import export_scene
 
+bl_info = {
+    "name": "ikz_quick_export",
+    "author": "izumi_ikezaki",
+    "version": (1, 0),
+    "blender": (3, 6, 0),
+    "location": "",
+    "description": "",
+    "warning": "test",
+    "wiki_url": "",
+    "tracker_url": "",
+    "category": "Object",
+}
+
 
 class MyPropGrp(bpy.types.PropertyGroup):
     option_path: bpy.props.StringProperty(

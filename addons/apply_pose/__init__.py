@@ -2,6 +2,19 @@ from bpy import utils, ops
 from bpy.ops import object, pose
 import bpy
 
+bl_info = {
+    "name": "ikz_apply_pose",
+    "author": "izumi_ikezaki",
+    "version": (1, 0),
+    "blender": (3, 6, 0),
+    "location": "",
+    "description": "apply pose",
+    "warning": "test",
+    "wiki_url": "",
+    "tracker_url": "",
+    "category": "Object",
+}
+
 
 class ApplyPose(bpy.types.Operator):
     bl_idname = "ikz.apply_pose"
