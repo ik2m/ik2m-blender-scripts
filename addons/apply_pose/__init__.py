@@ -16,7 +16,7 @@ bl_info = {
 }
 
 
-class ApplyPose(bpy.types.Operator):
+class IKZ_OT_ApplyPose(bpy.types.Operator):
     bl_idname = "ikz.apply_pose"
     bl_label = "apply pose"
     bl_description = "現状のポーズをレフトポーズにする"
@@ -24,7 +24,7 @@ class ApplyPose(bpy.types.Operator):
     @classmethod
     def poll(cls, context):
         return (
-            context.active_object.type == "ARMATURE"
+            getattr(context.active_object, "type", None) == "ARMATURE"
         )  # and context.mode == 'ARMATURE'
 
     def execute(self, context):
@@ -50,8 +50,9 @@ class ApplyPose(bpy.types.Operator):
         return {"FINISHED"}
 
 
-class ApplyPoseLayoutPanel(bpy.types.Panel):
+class IKZ_PT_apply_pose(bpy.types.Panel):
     bl_category = "ikz"
+    bl_idname = __name__
     bl_label = "apply pose"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
@@ -63,12 +64,12 @@ class ApplyPoseLayoutPanel(bpy.types.Panel):
 
         row = layout.row()
         row.scale_y = 2.0
-        row.operator(ApplyPose.bl_idname)
+        row.operator(IKZ_OT_ApplyPose.bl_idname)
 
 
 register_classes = (
-    ApplyPoseLayoutPanel,
-    ApplyPose,
+    IKZ_PT_apply_pose,
+    IKZ_OT_ApplyPose,
 )
 
 
