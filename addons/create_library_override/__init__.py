@@ -27,6 +27,9 @@ class CreateLibraryOverrideOperator(bpy.types.Operator):
         return {"FINISHED"}
 
 
+classes = [CreateLibraryOverrideOperator]
+
+
 def draw_menu(self, context):
     # アウトライナの右クリックで表示する
     layout = self.layout
@@ -35,13 +38,15 @@ def draw_menu(self, context):
 
 
 def register():
-    bpy.utils.register_class(CreateLibraryOverrideOperator)
+    for cls in classes:
+        bpy.utils.register_class(cls)
     bpy.types.OUTLINER_MT_object.append(draw_menu)
 
 
 def unregister():
     bpy.types.OUTLINER_MT_object.remove(draw_menu)
-    bpy.utils.unregister_class(CreateLibraryOverrideOperator)
+    for cls in classes:
+        bpy.utils.unregister_class(cls)
 
 
 if __name__ == "__main__":

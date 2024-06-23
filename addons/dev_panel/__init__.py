@@ -38,12 +38,17 @@ class DevPanel(bpy.types.Panel):
         row.operator("script.reload", icon="FILE_REFRESH")
 
 
+classes = [DevPanel]
+
+
 def register():
-    bpy.utils.register_class(DevPanel)
+    for cls in classes:
+        bpy.utils.register_class(cls)
 
 
 def unregister():
-    bpy.utils.unregister_class(DevPanel)
+    for cls in classes:
+        bpy.utils.unregister_class(cls)
 
 
 if __name__ == "__main__":

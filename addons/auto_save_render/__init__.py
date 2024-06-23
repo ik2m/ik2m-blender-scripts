@@ -118,9 +118,7 @@ def auto_save_render(scene):
 #     requests.post(line_notify_api, headers=headers, data=data)
 #
 #
-classes = {
-    AddonPreferences,
-}
+classes = [AddonPreferences]
 
 
 def register():

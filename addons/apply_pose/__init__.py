@@ -67,19 +67,16 @@ class ApplyPosePanel(bpy.types.Panel):
         row.operator(ApplyPoseOperator.bl_idname)
 
 
-register_classes = (
-    ApplyPosePanel,
-    ApplyPoseOperator,
-)
+classes = [ApplyPosePanel, ApplyPoseOperator]
 
 
 def register():
-    for c in register_classes:
+    for c in classes:
         bpy.utils.register_class(c)
 
 
 def unregister():
-    for c in register_classes:
+    for c in classes:
         bpy.utils.unregister_class(c)
 
 
