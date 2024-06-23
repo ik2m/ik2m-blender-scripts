@@ -137,7 +137,7 @@ def unregister():
         bpy.utils.unregister_class(cls)
     # bpy.app.handlers.render_pre.remove(set_base_path)
 
-    bpy.app.handlers.render_complete.append(auto_save_render)
+    bpy.app.handlers.render_complete.remove(auto_save_render)
     # bpy.app.handlers.render_post.remove(auto_save_render)
 
 
