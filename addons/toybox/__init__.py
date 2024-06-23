@@ -2,7 +2,7 @@ from bpy import utils
 import bpy
 
 bl_info = {
-    "name": "ikz_dev_panel",
+    "name": "ikz_toybox",
     "author": "izumi_ikezaki",
     "version": (1, 0),
     "blender": (3, 6, 0),
@@ -27,7 +27,7 @@ class DevPanel(bpy.types.Panel):
     def draw(self, context):
         layout = self.layout
 
-        obj = context.object
+        # obj = context.object
 
         # row = layout.row()
         # row.label(text="Active object is: " + obj.name)
