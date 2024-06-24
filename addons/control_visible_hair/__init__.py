@@ -25,14 +25,11 @@ class DisableHairOnViewportOperator(bpy.types.Operator):
         view_layer = context.view_layer
 
         for obj in view_layer.objects:
-            print(obj.name)
-            print(obj.type)
             if (
                 obj.type
                 == "CURVES"
                 # and getattr(obj.data, "bevel_object", None) is not None
             ):
-                print("name")
                 obj.hide_viewport = True
 
         return {"FINISHED"}
