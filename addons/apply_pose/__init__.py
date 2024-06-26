@@ -67,7 +67,7 @@ class ApplyPosePanel(bpy.types.Panel):
         row.operator(ApplyPoseOperator.bl_idname)
 
 
-classes = [ApplyPosePanel, ApplyPoseOperator]
+classes = {ApplyPosePanel, ApplyPoseOperator}
 
 
 def register():

@@ -148,13 +148,13 @@ class Panel(bpy.types.Panel):
         row.operator(ExportAutoRigProFbxOperator.bl_idname)
 
 
-register_classes = [
+register_classes = {
     Panel,
     QuickExportOperator,
     ExportBetterFbxOperator,
     ExportAutoRigProFbxOperator,
     MyPropGrp,
-]
+}
 
 
 def register():

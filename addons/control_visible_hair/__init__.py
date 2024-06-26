@@ -59,7 +59,7 @@ def draw_menu(self, context):
     layout.operator(EnableHairOnViewportOperator.bl_idname, icon="HIDE_OFF")
 
 
-classes = [DisableHairOnViewportOperator, EnableHairOnViewportOperator]
+classes = {DisableHairOnViewportOperator, EnableHairOnViewportOperator}
 
 
 def register():

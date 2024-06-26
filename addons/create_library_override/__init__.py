@@ -27,7 +27,7 @@ class CreateLibraryOverrideOperator(bpy.types.Operator):
         return {"FINISHED"}
 
 
-classes = [CreateLibraryOverrideOperator]
+classes = {CreateLibraryOverrideOperator}
 
 
 def draw_menu(self, context):
