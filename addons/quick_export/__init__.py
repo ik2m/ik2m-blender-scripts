@@ -108,8 +108,27 @@ class ExportAutoRigProFbxOperator(bpy.types.Operator):
         return {"CANCELLED"}
 
     def execute(self, context):
-        arp_export_scene = getattr(bpy.ops, "arp_export_scene", None)
-        arp_export_scene.fbx("INVOKE_DEFAULT")
+        """
+        @see https://www.lucky3d.fr/auto-rig-pro/doc/ge_export_doc.html#export-by-script
+        """
+        # set the file path output here
+        # scene.arp_export_twist = True
+        file_output = ""
+
+        scene = bpy.context.scene
+        scene.arp_export_rig_type = "HUMANOID"
+        scene.arp_engine_type = "UNREAL"
+        # scene.arp_keep_bend_bones = True
+        # scene.arp_units_x100 = True
+        # scene.arp_bake_actions = True
+        # scene.arp_export_name_actions = True
+        # scene.arp_export_name_string = "test"
+        # scene.arp_mesh_smooth_type = 'EDGE'
+        # scene.arp_ue_root_motion = True
+        # scene.arp_export_noparent = True
+
+        # run export
+        bpy.ops.arp.arp_export_fbx_panel("INVOKE_DEFAULT", filepath=file_output)
         return {"FINISHED"}
 
 
