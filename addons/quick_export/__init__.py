@@ -116,16 +116,63 @@ class ExportAutoRigProFbxOperator(bpy.types.Operator):
         file_output = ""
 
         scene = bpy.context.scene
+
+        print("\nScene Properties:")
+        for prop in scene.bl_rna.properties:
+            if not prop.is_readonly:
+                value = getattr(scene, prop.identifier)
+                print(f"  {prop.identifier}: {value}")
+
+        scene.arp_ge_fp = "//output.fbx"
+
+        scene.arp_engine_type = "UNITY"
         scene.arp_export_rig_type = "HUMANOID"
-        scene.arp_engine_type = "UNREAL"
-        # scene.arp_keep_bend_bones = True
-        # scene.arp_units_x100 = True
-        # scene.arp_bake_actions = True
-        # scene.arp_export_name_actions = True
-        # scene.arp_export_name_string = "test"
-        # scene.arp_mesh_smooth_type = 'EDGE'
-        # scene.arp_ue_root_motion = True
-        # scene.arp_export_noparent = True
+
+        # Rig
+        scene.arp_ge_sel_only = False  # selected object only
+        scene.arp_ge_sel_bones_only = False  # selected bone only
+        scene.arp_keep_bend_bones = False  # Rig Definition > Advanced
+        scene.arp_push_bend = False  # Rig Definition > Push Additive
+        scene.arp_full_facial = True  # Rig Definition > Full Facial
+        scene.arp_export_twist = True  # Rig Definition > Export Twist
+        scene.arp_twist_fac = 0.5  # Rig Definition > Twist Amount
+        scene.arp_ge_master_traj = False  # Rig Definition > Export Root Bone (c_traj)
+        scene.arp_export_noparent = (
+            False  # Rig Definition > No Parents (allow animated stretch)
+        )
+        scene.arp_export_renaming = False  # Rig Definition > Rename Bones from File
+        scene.arp_export_rig_name = "root"  # Rig Definition > Rig Name
+        scene.arp_units_x100 = True  # Units > Units x100
+        scene.arp_export_bake_axis_convert = False  # Units > Bake Axis Conversion
+        scene.arp_ue_root_motion = True  # Root Motion > Root Motion
+
+        # Animations
+        scene.arp_bake_anim = False  # Bake Animations
+
+        # Misc
+        scene.arp_global_scale = 1  # Global Scale
+        scene.arp_mesh_smooth_type = "OFF"  # Geometry > Smooth
+        scene.arp_use_tspace = False  # Geometry > Tangent Space
+        scene.arp_apply_mods = True  # Geometry > Apply Modifiers
+        scene.arp_apply_subsurf = True  # Geometry > Apply Subsurf Modifiers
+        scene.arp_export_triangulate = False  # Geometry > Triangulate
+        scene.arp_ge_vcol_type = "SRGB"  # Geometry > Vertex Colors
+        scene.arp_fix_fbx_rot = False  # Debug > Fix Rotations
+        scene.arp_fix_fbx_matrix = True  # Debug > Fix Matrices
+        scene.arp_ge_add_dummy_mesh = False  # Debug > Add Dummy Mesh
+        scene.arp_ge_force_rest_pose_export = True  # Debug > Force Rest Pose Export
+        scene.arp_init_fbx_rot = (
+            True  # Armature Axes > Initialize Fbx Armature Rotation
+        )
+        scene.arp_init_fbx_rot_mesh = (
+            True  # Armature Axes > Initialize Fbx Meshes Rotation
+        )
+        # scene.arp_export_bake_axis_convert = (
+        #     True  # Armature Axes > Bake Axis Conversion
+        # )
+        scene.arp_bone_axis_primary_export = "Y"  # Bone Axes > Primary
+        scene.arp_bone_axis_secondary_export = "Y"  # Bone Axes > Secondary
+        scene.arp_export_tex = True  # Textures > Embed Textures
 
         # run export
         bpy.ops.arp.arp_export_fbx_panel("INVOKE_DEFAULT", filepath=file_output)
