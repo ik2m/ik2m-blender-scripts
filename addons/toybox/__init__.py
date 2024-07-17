@@ -1,5 +1,6 @@
 from bpy import utils
 import bpy
+from . import auto_collection_color
 
 bl_info = {
     "name": "ikz_toybox",
@@ -44,9 +45,12 @@ classes = [DevPanel]
 def register():
     for cls in classes:
         bpy.utils.register_class(cls)
+    auto_collection_color.register()
 
 
 def unregister():
+    auto_collection_color.unregister()
+
     for cls in reversed(classes):
         bpy.utils.unregister_class(cls)
 
