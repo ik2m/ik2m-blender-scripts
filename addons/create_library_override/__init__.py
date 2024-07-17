@@ -27,7 +27,7 @@ class CreateLibraryOverrideOperator(bpy.types.Operator):
         return {"FINISHED"}
 
 
-classes = {CreateLibraryOverrideOperator}
+classes = [CreateLibraryOverrideOperator]
 
 
 def draw_menu(self, context):
@@ -45,7 +45,7 @@ def register():
 
 def unregister():
     bpy.types.OUTLINER_MT_object.remove(draw_menu)
-    for cls in classes:
+    for cls in reversed(classes):
         bpy.utils.unregister_class(cls)
 
 

@@ -38,7 +38,7 @@ class DevPanel(bpy.types.Panel):
         row.operator("script.reload", icon="FILE_REFRESH")
 
 
-classes = {DevPanel}
+classes = [DevPanel]
 
 
 def register():
@@ -47,7 +47,7 @@ def register():
 
 
 def unregister():
-    for cls in classes:
+    for cls in reversed(classes):
         bpy.utils.unregister_class(cls)
 
 

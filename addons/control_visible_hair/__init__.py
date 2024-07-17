@@ -59,7 +59,7 @@ def draw_menu(self, context):
     layout.operator(EnableHairOnViewportOperator.bl_idname, icon="HIDE_OFF")
 
 
-classes = {DisableHairOnViewportOperator, EnableHairOnViewportOperator}
+classes = [DisableHairOnViewportOperator, EnableHairOnViewportOperator]
 
 
 def register():
@@ -74,7 +74,7 @@ def unregister():
     bpy.types.OUTLINER_MT_context_menu.remove(draw_menu)
     bpy.types.OUTLINER_MT_collection.remove(draw_menu)
     bpy.types.OUTLINER_MT_object.remove(draw_menu)
-    for c in classes:
+    for c in reversed(classes):
         bpy.utils.unregister_class(c)
 
 

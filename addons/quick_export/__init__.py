@@ -219,13 +219,13 @@ class Panel(bpy.types.Panel):
         row.operator(ExportAutoRigProFbxOperator.bl_idname)
 
 
-register_classes = {
+register_classes = [
     Panel,
     QuickExportOperator,
     ExportBetterFbxOperator,
     ExportAutoRigProFbxOperator,
     MyPropGrp,
-}
+]
 
 
 def register():
@@ -236,7 +236,7 @@ def register():
 
 
 def unregister():
-    for c in register_classes:
+    for c in reversed(register_classes):
         bpy.utils.unregister_class(c)
 
     delattr(bpy.types.Scene, "ikz_qe_props")

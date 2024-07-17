@@ -118,7 +118,7 @@ def auto_save_render(scene):
 #     requests.post(line_notify_api, headers=headers, data=data)
 #
 #
-classes = {AddonPreferences}
+classes = [AddonPreferences]
 
 
 def register():
@@ -131,7 +131,7 @@ def register():
 
 
 def unregister():
-    for cls in classes:
+    for cls in reversed(classes):
         bpy.utils.unregister_class(cls)
     # bpy.app.handlers.render_pre.remove(set_base_path)
 
