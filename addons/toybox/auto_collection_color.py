@@ -7,6 +7,9 @@ def set_collection_color(collection):
     コレクションに色をつける
     """
     name = str.lower(collection.name)
+    if "backup" in name:
+        collection.color_tag = "COLOR_01"
+        return
     if "cache" in name:
         collection.color_tag = "COLOR_01"
         return
