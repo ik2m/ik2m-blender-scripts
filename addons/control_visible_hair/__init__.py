@@ -2,7 +2,7 @@ from bpy import utils
 import bpy
 
 bl_info = {
-    "name": "ikz_control_Hair_on_Viewport",
+    "name": "ik2m_control_Hair_on_Viewport",
     "author": "izumi_ikezaki",
     "version": (1, 0),
     "blender": (3, 6, 0),

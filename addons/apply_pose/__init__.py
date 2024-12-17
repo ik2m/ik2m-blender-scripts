@@ -3,7 +3,7 @@ from bpy.ops import object, pose
 import bpy
 
 bl_info = {
-    "name": "ikz_apply_pose",
+    "name": "ik2m_apply_pose",
     "author": "izumi_ikezaki",
     "version": (1, 0),
     "blender": (3, 6, 0),
@@ -17,7 +17,7 @@ bl_info = {
 
 
 class ApplyPoseOperator(bpy.types.Operator):
-    bl_idname = "ikz.apply_pose"
+    bl_idname = "ik2m.apply_pose"
     bl_label = "apply pose"
     bl_description = "現状のポーズをレフトポーズにする"
 
@@ -51,8 +51,8 @@ class ApplyPoseOperator(bpy.types.Operator):
 
 
 class ApplyPosePanel(bpy.types.Panel):
-    bl_category = "ikz"
-    bl_idname = "IKZ_PT_ApplyPose"
+    bl_category = "ik2m"
+    bl_idname = "ik2m_PT_ApplyPose"
     bl_label = "apply pose"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"

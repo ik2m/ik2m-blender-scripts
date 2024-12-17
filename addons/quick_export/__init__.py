@@ -5,7 +5,7 @@ from bpy import props, path, utils
 from bpy.ops import export_scene
 
 bl_info = {
-    "name": "ikz_quick_export",
+    "name": "ik2m_quick_export",
     "author": "izumi_ikezaki",
     "version": (1, 0),
     "blender": (3, 6, 0),
@@ -32,7 +32,7 @@ class MyPropGrp(bpy.types.PropertyGroup):
 
 
 class QuickExportOperator(bpy.types.Operator):
-    bl_idname = "ikz.quick_export"
+    bl_idname = "ik2m.quick_export"
     bl_label = "quick export"
     bl_description = "指定の場所に自分用の設定でエクスポートするやつ"
 
@@ -44,7 +44,7 @@ class QuickExportOperator(bpy.types.Operator):
         )
         default_name = bpy.path.basename(bpy.context.blend_data.filepath).split(".")[0]
 
-        setting = getattr(context.scene, "ikz_qe_props", None)
+        setting = getattr(context.scene, "ik2m_qe_props", None)
         p = setting.option_path or default_path
         n = setting.option_name or default_name
 
@@ -69,7 +69,7 @@ class QuickExportOperator(bpy.types.Operator):
 
 
 class ExportBetterFbxOperator(bpy.types.Operator):
-    bl_idname = "ikz.export_better_fbx"
+    bl_idname = "ik2m.export_better_fbx"
     bl_label = "export_better_fbx"
     bl_description = "エクスポート"
 
@@ -92,7 +92,7 @@ class ExportBetterFbxOperator(bpy.types.Operator):
 
 
 class ExportAutoRigProFbxOperator(bpy.types.Operator):
-    bl_idname = "ikz.export_auto_rig_pro_fbx"
+    bl_idname = "ik2m.export_auto_rig_pro_fbx"
     bl_label = "export_auto_rig_pro_fbx"
     bl_description = "エクスポート"
 
@@ -185,8 +185,8 @@ class ExportAutoRigProFbxOperator(bpy.types.Operator):
 
 
 class Panel(bpy.types.Panel):
-    bl_category = "ikz"
-    bl_idname = "IKZ_PT_QuickExport"
+    bl_category = "ik2m"
+    bl_idname = "ik2m_PT_QuickExport"
     bl_label = "quick export"
     bl_description = "エクスポートする"
     bl_space_type = "VIEW_3D"
@@ -200,7 +200,7 @@ class Panel(bpy.types.Panel):
         """
         layout = self.layout
 
-        setting = getattr(context.scene, "ikz_qe_props", None)
+        setting = getattr(context.scene, "ik2m_qe_props", None)
         # row = layout.row()
         # row.prop(setting, "option_path")
         # row = layout.row()
@@ -232,14 +232,14 @@ def register():
     for c in register_classes:
         bpy.utils.register_class(c)
 
-    setattr(bpy.types.Scene, "ikz_qe_props", props.PointerProperty(type=MyPropGrp))
+    setattr(bpy.types.Scene, "ik2m_qe_props", props.PointerProperty(type=MyPropGrp))
 
 
 def unregister():
     for c in reversed(register_classes):
         bpy.utils.unregister_class(c)
 
-    delattr(bpy.types.Scene, "ikz_qe_props")
+    delattr(bpy.types.Scene, "ik2m_qe_props")
 
 
 if __name__ == "__main__":

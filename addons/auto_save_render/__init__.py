@@ -7,7 +7,7 @@ import bpy
 # import requests
 
 bl_info = {
-    "name": "ikz_auto_save_render",
+    "name": "ik2m_auto_save_render",
     "author": "izumi_ikezaki",
     "version": (1, 0),
     "blender": (3, 6, 0),

@@ -3,7 +3,7 @@ from bpy.ops import object
 import bpy
 
 bl_info = {
-    "name": "ikz_create_library_override",
+    "name": "ik2m_create_library_override",
     "author": "izumi_ikezaki",
     "version": (1, 0),
     "blender": (3, 6, 0),

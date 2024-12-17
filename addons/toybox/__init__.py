@@ -3,7 +3,7 @@ import bpy
 from . import auto_collection_color
 
 bl_info = {
-    "name": "ikz_toybox",
+    "name": "ik2m_toybox",
     "author": "izumi_ikezaki",
     "version": (1, 0),
     "blender": (3, 6, 0),
@@ -17,8 +17,8 @@ bl_info = {
 
 
 class DevPanel(bpy.types.Panel):
-    bl_category = "ikz"
-    bl_idname = "IKZ_PT_DevPanel"
+    bl_category = "ik2m"
+    bl_idname = "ik2m_PT_DevPanel"
     bl_label = "for dev"
     bl_description = "開発に使うやつ"
     bl_space_type = "VIEW_3D"
