@@ -30,8 +30,8 @@ def get_preference(key):
     )
 
 
-class AddonPreferences(bpy.types.AddonPreferences):
-    bl_idname = "MY_MT_AddonPreferences"
+class IK2MAddonPreferences(bpy.types.AddonPreferences):
+    bl_idname = __name__
 
     auto_save_path: bpy.props.StringProperty(
         name="path", description="保存先のパス", default="", subtype="DIR_PATH"
@@ -118,7 +118,7 @@ def auto_save_render(scene):
 #     requests.post(line_notify_api, headers=headers, data=data)
 #
 #
-classes = [AddonPreferences]
+classes = [IK2MAddonPreferences]
 
 
 def register():
