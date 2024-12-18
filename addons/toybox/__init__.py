@@ -18,7 +18,7 @@ bl_info = {
 
 class DevPanel(bpy.types.Panel):
     bl_category = "ik2m"
-    bl_idname = "ik2m_PT_DevPanel"
+    bl_idname = "IK2M_PT_DevPanel"
     bl_label = "for dev"
     bl_description = "開発に使うやつ"
     bl_space_type = "VIEW_3D"

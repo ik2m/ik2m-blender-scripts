@@ -186,7 +186,7 @@ class ExportAutoRigProFbxOperator(bpy.types.Operator):
 
 class Panel(bpy.types.Panel):
     bl_category = "ik2m"
-    bl_idname = "ik2m_PT_QuickExport"
+    bl_idname = "IK2M_PT_QuickExport"
     bl_label = "quick export"
     bl_description = "エクスポートする"
     bl_space_type = "VIEW_3D"

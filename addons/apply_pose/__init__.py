@@ -52,7 +52,7 @@ class ApplyPoseOperator(bpy.types.Operator):
 
 class ApplyPosePanel(bpy.types.Panel):
     bl_category = "ik2m"
-    bl_idname = "ik2m_PT_ApplyPose"
+    bl_idname = "IK2M_PT_ApplyPose"
     bl_label = "apply pose"
     bl_space_type = "VIEW_3D"
     bl_region_type = "UI"
