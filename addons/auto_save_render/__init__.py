@@ -57,6 +57,9 @@ def auto_save_render(scene):
     レンダリング後にやること
     """
     output_path = get_preference("auto_save_path")
+    if not output_path:
+        print("自動保存をキャンセル。保存先パスが設定されていません。")
+        return
     if not os.path.isdir(output_path):
         print("自動保存をキャンセル。存在しないパスが設定されています :" + output_path)
         return
