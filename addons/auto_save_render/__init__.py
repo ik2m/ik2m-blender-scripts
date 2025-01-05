@@ -37,20 +37,10 @@ class IK2MAddonPreferences(bpy.types.AddonPreferences):
         name="path", description="保存先のパス", default="", subtype="DIR_PATH"
     )
 
-    # line_notify_token: bpy.props.StringProperty(
-    #     name="line_notify_token",
-    #     description="Line_Notifyのトークン",
-    #     default="",
-    #     subtype="PASSWORD",
-    # )
-
     def draw(self, context):
         layout = self.layout
         row = layout.row(align=True)
         row.prop(self, "auto_save_path")
-
-        row = layout.row(align=True)
-        row.prop(self, "line_notify_token")
 
 
 @persistent
@@ -97,46 +87,23 @@ def auto_save_render(scene):
         return
 
     print("Auto_Save:", save_name)
-    # sendLineNotify("Auto_Save:" + save_name)
     image.save_render(save_name, scene=None)
 
-
-###########################################################################
-
-
-# def sendLineNotify(message):
-#     """
-#     LINEに通知する
-#     """
-#     line_notify_token = auto_save_path(line_notify_token)
-#     print(line_notify_token)
-#     if not line_notify_token:
-#         return
-#     line_notify_api = 'https://notify-api.line.me/api/notify'
-#     headers = {'Authorization': f'Bearer {line_notify_token}'}
-#     data = {'message': message}
-#     requests.post(line_notify_api, headers=headers, data=data)
-#
-#
 classes = [IK2MAddonPreferences]
 
 
 def register():
     for cls in classes:
         bpy.utils.register_class(cls)
-    # bpy.app.handlers.render_pre.append(set_base_path)
 
     bpy.app.handlers.render_complete.append(auto_save_render)
-    # bpy.app.handlers.render_post.append(auto_save_render)
 
 
 def unregister():
     for cls in reversed(classes):
         bpy.utils.unregister_class(cls)
-    # bpy.app.handlers.render_pre.remove(set_base_path)
 
     bpy.app.handlers.render_complete.remove(auto_save_render)
-    # bpy.app.handlers.render_post.remove(auto_save_render)
 
 
 if __name__ == "__main__":
