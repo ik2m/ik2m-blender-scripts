@@ -48,7 +48,7 @@ class IK2MAddonPreferences(bpy.types.AddonPreferences):
         row.prop(self, "discord_webhook")
 
 @persistent
-def sendLineNotify(scene):
+def send_line_notify(scene):
     discord_webhook = get_preference("discord_webhook")
     print(discord_webhook)
     if not discord_webhook:
@@ -69,14 +69,14 @@ def register():
     for cls in classes:
         bpy.utils.register_class(cls)
 
-    bpy.app.handlers.render_post.append(sendLineNotify)
+    bpy.app.handlers.render_post.append(send_line_notify)
 
 
 def unregister():
     for cls in reversed(classes):
         bpy.utils.unregister_class(cls)
 
-    bpy.app.handlers.render_post.remove(sendLineNotify)
+    bpy.app.handlers.render_post.remove(send_line_notify)
 
 
 if __name__ == "__main__":
