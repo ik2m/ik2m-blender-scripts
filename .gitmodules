@@ -4,3 +4,6 @@
 [submodule "addons/real-sky"]
 	path = addons/real-sky
 	url = https://gitlab.com/marcopavanello/real-sky.git
+[submodule "addons/Mio3Shapekey"]
+	path = addons/Mio3Shapekey
+	url = git@github.com:mio3io/Mio3Shapekey.git
