@@ -10,7 +10,7 @@ bl_info = {
     "name": "ik2m_auto_save_render",
     "author": "izumi_ikezaki",
     "version": (1, 0),
-    "blender": (3, 6, 0),
+    "blender": (4, 2, 8),
     "location": "Rendertab -> Render Panel",
     "description": "Automatically save the image after rendering",
     "warning": "test",

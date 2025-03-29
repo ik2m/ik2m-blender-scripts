@@ -6,7 +6,7 @@ bl_info = {
     "name": "ik2m_toybox",
     "author": "izumi_ikezaki",
     "version": (1, 0),
-    "blender": (3, 6, 0),
+    "blender": (4, 2, 8),
     "location": "",
     "description": "",
     "warning": "test",

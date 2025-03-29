@@ -11,7 +11,7 @@ bl_info = {
     "name": "notify_render",
     "author": "izumi_ikezaki",
     "version": (1, 0),
-    "blender": (3, 6, 0),
+    "blender": (4, 2, 8),
     "location": "Rendertab -> Render Panel",
     "description": "Discordに通知するやーつ",
     "warning": "test",
