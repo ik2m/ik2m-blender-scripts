@@ -1,0 +1,3 @@
+[submodule "addons/Gaffer"]
+	path = addons/Gaffer
+	url = git@github.com:gregzaal/Gaffer.git
