@@ -1,3 +1,6 @@
 [submodule "addons/Gaffer"]
 	path = addons/Gaffer
 	url = git@github.com:gregzaal/Gaffer.git
+[submodule "addons/real-sky"]
+	path = addons/real-sky
+	url = https://gitlab.com/marcopavanello/real-sky.git
