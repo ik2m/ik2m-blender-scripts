@@ -4,6 +4,10 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = [
+dependencies = []
+
+[dependency-groups]
+dev = [
     "fake-bpy-module-4-2>=20250130",
+    "ruff>=0.12.0",
 ]
