@@ -1,4 +1,3 @@
-from bpy import utils
 import bpy
 from . import auto_collection_color
 

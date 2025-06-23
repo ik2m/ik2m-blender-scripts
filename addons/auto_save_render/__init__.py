@@ -1,7 +1,6 @@
 import os
 import time
 from bpy.app.handlers import persistent
-from bpy import props, utils
 import bpy
 
 # import requests

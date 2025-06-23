@@ -20,7 +20,7 @@ def set_collection_color(collection):
 
 
 @persistent
-def auto_set_collection_color(dummy):
+def auto_set_collection_color(dummy1, dummy2):
     for collection in bpy.data.collections:
         if collection.color_tag == "NONE":
             set_collection_color(collection)

@@ -1,5 +1,3 @@
-from bpy import utils, ops
-from bpy.ops import object, pose
 import bpy
 
 bl_info = {
