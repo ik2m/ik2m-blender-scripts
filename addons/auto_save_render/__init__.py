@@ -92,6 +92,7 @@ def auto_save_render(scene):
     print("Auto_Save:", save_name)
     image.save_render(save_name, scene=None)
 
+
 classes = [IK2MAddonPreferences]
 
 

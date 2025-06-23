@@ -47,6 +47,7 @@ class IK2MAddonPreferences(bpy.types.AddonPreferences):
         row = layout.row(align=True)
         row.prop(self, "discord_webhook")
 
+
 @persistent
 def send_line_notify(scene):
     discord_webhook = get_preference("discord_webhook")
@@ -54,12 +55,12 @@ def send_line_notify(scene):
     if not discord_webhook:
         print("レンダリング通知をキャンセル。webhook URLが設定されていません。")
         return
-    data = {
-        "content": "レンダリングが完了しました"
-    }
-    response =requests.post(discord_webhook, json=data)
+    data = {"content": "レンダリングが完了しました"}
+    response = requests.post(discord_webhook, json=data)
     if response.status_code != 200:
-        print("レンダリング通知に失敗。{}:{}".format(response.status_code, response.text))
+        print(
+            "レンダリング通知に失敗。{}:{}".format(response.status_code, response.text)
+        )
 
 
 classes = [IK2MAddonPreferences]
