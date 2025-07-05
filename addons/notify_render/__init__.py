@@ -1,11 +1,7 @@
-import os
-import time
 from bpy.app.handlers import persistent
 from bpy import props, utils
 import bpy
 import requests
-
-# import requests
 
 bl_info = {
     "name": "notify_render",
@@ -49,7 +45,7 @@ class IK2MAddonPreferences(bpy.types.AddonPreferences):
 
 
 @persistent
-def send_line_notify(scene):
+def send_discord_notify(scene):
     discord_webhook = get_preference("discord_webhook")
     print(discord_webhook)
     if not discord_webhook:
@@ -70,14 +66,14 @@ def register():
     for cls in classes:
         bpy.utils.register_class(cls)
 
-    bpy.app.handlers.render_post.append(send_line_notify)
+    bpy.app.handlers.render_post.append(send_discord_notify)
 
 
 def unregister():
     for cls in reversed(classes):
         bpy.utils.unregister_class(cls)
 
-    bpy.app.handlers.render_post.remove(send_line_notify)
+    bpy.app.handlers.render_post.remove(send_discord_notify)
 
 
 if __name__ == "__main__":
