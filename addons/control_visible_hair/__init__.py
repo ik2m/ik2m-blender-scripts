@@ -5,7 +5,7 @@ bl_info = {
     "name": "ik2m_control_Hair_on_Viewport",
     "author": "izumi_ikezaki",
     "version": (1, 0),
-    "blender": (3, 6, 0),
+    "blender": (4, 2, 8),
     "location": "",
     "description": "ヘアーオブジェクトは重くなりがちなので非表示にするスクリプト",
     "warning": "",

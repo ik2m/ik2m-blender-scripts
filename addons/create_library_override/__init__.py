@@ -1,12 +1,10 @@
-from bpy import utils
-from bpy.ops import object
 import bpy
 
 bl_info = {
     "name": "ik2m_create_library_override",
     "author": "izumi_ikezaki",
     "version": (1, 0),
-    "blender": (3, 6, 0),
+    "blender": (4, 2, 8),
     "location": "",
     "description": "create library override",
     "warning": "test",

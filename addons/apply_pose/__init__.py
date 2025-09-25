@@ -1,12 +1,10 @@
-from bpy import utils, ops
-from bpy.ops import object, pose
 import bpy
 
 bl_info = {
     "name": "ik2m_apply_pose",
     "author": "izumi_ikezaki",
     "version": (1, 0),
-    "blender": (3, 6, 0),
+    "blender": (4, 2, 8),
     "location": "",
     "description": "apply pose",
     "warning": "test",
